@@ -8,6 +8,10 @@ const mongoose = require('mongoose')
 const loginRouter = require('./routes/loginRoute')
 const signupRouter = require('./routes/signupRoute')
 const userDataRouter = require('./routes/userDataRoute')
+const fetchTimeSlotsRouter = require('./routes/fetchTimeSlotsRoute');
+const bookTimeSlotRouter = require('./routes/bookTimeSlotRoute')
+const generateDefaultTimeSlotsRouter = require('./routes/generateDefaultTimeSlotsRoute')
+
 
 app.get('/', (request, response) => {
     response.send(`<h1>Hello World!</h1> It's working`)
@@ -25,7 +29,10 @@ db.once('open', () => console.log('Connected to db successfully'))
 
 app.use('/api/v1/login',loginRouter)
 app.use('/api/v1/signup',signupRouter)
-app.use('/api/v1/userdata',userDataRouter)
+app.use('/api/v1/userdata', userDataRouter)
+app.use('/api/v1/fetchtime', fetchTimeSlotsRouter)
+app.use('/api/v1/booktime', bookTimeSlotRouter)
+app.use('/api/v1/generatedefault', generateDefaultTimeSlotsRouter)
 
 
 app.listen(PORT, console.log(`Server running at http://localhost:${PORT}/api/v1/login`))

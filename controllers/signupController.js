@@ -6,6 +6,7 @@ const registerNewUser = async (request,response)=>{
     const user = new userModel({
         firstName : request.body.firstName,
         lastName : request.body.lastName,
+        role : request.body.role,
         email : request.body.email,
         password : encryptedPassword
     })
